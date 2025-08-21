@@ -102,6 +102,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - Support organizing files in subfolders.
 
 ## Contact
-For questions or suggestions, open an issue or reach out via [GitHub Discussions](https://github.com/albeniraouf/downloads-organizer/discussions).
+For questions or suggestions, open an issue.
 
 Happy organizing!
