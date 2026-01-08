@@ -1,9 +1,10 @@
 # Downloads Organizer
 
-A Bash script to automatically organize files in your `~/Downloads` folder by grouping them into meaningful categories based on file extensions (e.g., Images, Videos, Documents). This tool helps keep your Downloads folder tidy and is perfect for anyone who wants a cleaner file system.
+A Bash script to automatically organize files in your `~/Downloads` folder (or any custom folder) by grouping them into meaningful categories based on file extensions (e.g., Images, Videos, Documents). This tool helps keep your Downloads folder tidy and is perfect for anyone who wants a cleaner file system.
 
 ## Features
 - Organizes files into intuitive categories like `Images`, `Videos`, `Archives`, `Documents`, `Code`, and more.
+- Supports custom folder paths - organize any folder, not just Downloads.
 - Moves files without extensions to an `Others` folder.
 - Skips temporary download files (e.g., `.crdownload`, `.part`) to avoid interrupting active downloads.
 - Creates category folders only when needed.
@@ -21,16 +22,30 @@ A Bash script to automatically organize files in your `~/Downloads` folder by gr
    ```
 3. Make the script executable:
    ```bash
-   chmod +x organize_downloads.sh
+   chmod +x organize-downloads.sh
    ```
 
 ## Usage
-1. Run the script:
+
+### Default Usage (Downloads Folder)
+Run the script without arguments to organize your `~/Downloads` folder:
    ```bash
-   ./organize_downloads.sh
+   ./organize-downloads.sh
    ```
-2. The script will:
-   - Check if the `~/Downloads` folder exists.
+
+### Custom Folder
+You can organize any folder by passing its path as an argument:
+   ```bash
+   ./organize-downloads.sh /path/to/custom/folder
+   ```
+
+You can also use relative paths:
+   ```bash
+   ./organize-downloads.sh ./my-folder
+   ```
+
+The script will:
+   - Check if the specified folder (or `~/Downloads` if no argument is provided) exists.
    - Organize files into category folders (e.g., `Images`, `Videos`, `Documents`).
    - Skip temporary download files.
    - Display progress (e.g., "Moved photo.jpg to Images/", "Created directory: Videos").
@@ -67,7 +82,7 @@ After:
 ```
 
 ## Temporary Download Files
-To avoid interrupting active downloads, the script skips files with extensions commonly associated with in-progress downloads. These files remain in the `~/Downloads` folder until their download completes, after which they can be organized on the next run.
+To avoid interrupting active downloads, the script skips files with extensions commonly associated with in-progress downloads. These files remain in the target folder until their download completes, after which they can be organized on the next run.
 
 | Ignored Extension | Description |
 |-------------------|-------------|
@@ -80,7 +95,7 @@ To avoid interrupting active downloads, the script skips files with extensions c
 ## Requirements
 - **Operating System**: Linux, macOS, or Windows (via WSL or Git Bash).
 - **Bash**: Version 4.0 or higher (for associative array support).
-- **Permissions**: Write access to the `~/Downloads` folder.
+- **Permissions**: Write access to the folder you want to organize (defaults to `~/Downloads`).
 
 ## Contributing
 Contributions are welcome! To contribute:

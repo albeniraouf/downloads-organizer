@@ -1,9 +1,19 @@
 #!/bin/bash
 
-DOWNLOADS="$HOME/Downloads"
+# Use custom folder if provided, otherwise default to Downloads
+if [ -n "$1" ]; then
+    DOWNLOADS="$1"
+else
+    DOWNLOADS="$HOME/Downloads"
+fi
+
+# Convert to absolute path if relative path is provided
+if [[ "$DOWNLOADS" != /* ]]; then
+    DOWNLOADS="$(cd "$(dirname "$DOWNLOADS")" && pwd)/$(basename "$DOWNLOADS")"
+fi
 
 if [ ! -d "$DOWNLOADS" ]; then
-    echo "Error: Downloads folder does not exist at $DOWNLOADS"
+    echo "Error: Folder does not exist at $DOWNLOADS"
     exit 1
 fi
 
